@@ -8,3 +8,6 @@ I am still in the process of working through the true optimal change solution wh
 
 ## Update: I solved the optimal change problem
 
+See `change_maker_b.rb` for this solution and call `change_maker_spec_b.rb` to ensure that it works!
+
+It turns out that you don't need to recursively call any method to solve the optimal change problem if you don't worry about performance - you can brute force all the possible combinations and choose the smallest combination and return that as your answer.
