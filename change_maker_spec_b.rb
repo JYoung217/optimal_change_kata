@@ -1,4 +1,4 @@
-require_relative 'change_maker'
+require_relative 'change_maker_b'
 
 describe ChangeMaker do
   describe '.make_change' do
