@@ -7,26 +7,26 @@ class ChangeMaker
       raise ChangeError if denominations.size == 0
       denominations.reject! { |denomination| denomination > amount }
 
-      optimal_coin_array = get_optimal_coin(amount, denominations)
-      optimal_coin = optimal_coin_array.first
-      optimal_coin_array.last.times { coin_array << optimal_coin }
+      greedy_coin_array = get_greedy_coin(amount, denominations)
+      optimal_coin = greedy_coin_array.first
+      greedy_coin_array.last.times { coin_array << optimal_coin }
       denominations.delete(optimal_coin)
 
-      make_change(calculated_new_amount(amount, optimal_coin_array), denominations, coin_array)
+      make_change(calculated_new_amount(amount, greedy_coin_array), denominations, coin_array)
     end
 
     def calculated_new_amount(amount, coin_array)
       amount - coin_array.first * coin_array.last
     end
 
-    def get_optimal_coin(amount, denominations)
-      denomination_divisor_hash = {}
+    def get_greedy_coin(amount, denominations)
+      greedy_hash = {}
 
       denominations.each do |denomination|
-        denomination_divisor_hash[denomination] = amount / denomination
+        greedy_hash[denomination] = amount / denomination
       end
 
-      denomination_divisor_hash.sort_by { |_key, value| value }.first
+      greedy_hash.sort_by { |_key, value| value }.first
     end
   end
 end

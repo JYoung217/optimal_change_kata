@@ -1,1 +1,3 @@
-# optimal_change_kata
+# Optimal Change Kata
+
+Description here
